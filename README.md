@@ -1,2 +1,0 @@
-# arraylist-parent
-arraylist.cn
