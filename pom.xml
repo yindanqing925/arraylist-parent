@@ -43,7 +43,7 @@
 
     <modules>
         <module>cloud-microservice</module>
-        <module>cloud-platform</module>
+        <!--<module>cloud-platform</module>-->
         <module>cloud-common</module>
         <module>cloud-infrastructure</module>
     </modules>
