@@ -1,0 +1,18 @@
+server:
+  port: 7200
+
+spring:
+  application:
+    name: cloud-config-microservice
+  profiles:
+    active: dev, native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/document
+
+
+# Logger config
+logging:
+  config: classpath:log4j2.xml

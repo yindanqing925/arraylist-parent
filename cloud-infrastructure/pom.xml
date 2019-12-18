@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-infrastructure</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cloud-register-microservice</module>
+        <module>cloud-config-microservice</module>
+    </modules>
 
 
 </project>
