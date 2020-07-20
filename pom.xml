@@ -28,6 +28,10 @@
                         <artifactId>logback-classic</artifactId>
                         <groupId>ch.qos.logback</groupId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -38,6 +42,10 @@
                     <exclusion>
                         <artifactId>logback-classic</artifactId>
                         <groupId>ch.qos.logback</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -115,6 +123,11 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>2.2.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
                 <version>2.2.0.RELEASE</version>
                 <exclusions>
@@ -130,11 +143,37 @@
                 <artifactId>spring-boot-starter-actuator</artifactId>
                 <version>2.2.0.RELEASE</version>
             </dependency>
+            <!-- swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>1.5.14</version>
+            </dependency>
             <!-- spring -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.10.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.10.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>2.9.5</version>
+                <version>2.10.0</version>
             </dependency>
             <!-- lombok -->
             <dependency>
@@ -153,6 +192,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>3.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.nh</groupId>
+                <artifactId>common-web</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

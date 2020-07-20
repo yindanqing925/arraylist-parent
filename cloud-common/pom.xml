@@ -10,11 +10,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-common</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>cloud-common-util</module>
-        <module>cloud-common-feign</module>
-    </modules>
 
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>common-util</module>
+        <module>common-feign</module>
+        <module>common-web</module>
+        <module>common-config</module>
+        <module>common-exception</module>
+    </modules>
 
 </project>

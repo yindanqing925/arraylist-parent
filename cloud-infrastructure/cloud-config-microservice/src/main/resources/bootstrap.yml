@@ -10,7 +10,7 @@ spring:
     config:
       server:
         native:
-          search-locations: classpath:/document
+          search-locations: classpath:/document, classpath:/document/user
 
 
 # Logger config

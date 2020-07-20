@@ -3,7 +3,17 @@ eureka:
   instance:
     prefer-ip-address: true #以IP地址注册到服务中心
     #服务中心的信息显示（如果IP地址不显示的话，进行配置）
-    #instance-id: http://192.168.1.4:8110
+    instance-id: cloud-user-microservice#1
   client:
     service-url:
       defaultZone: http://localhost:7100/eureka/
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:7200
+      enabled: true
+      discovery:
+        service-id: cloud-config-microservice
+      label: user
+    profile: dev
