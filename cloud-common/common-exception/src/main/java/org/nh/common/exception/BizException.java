@@ -2,24 +2,24 @@ package org.nh.common.exception;
 
 /**
  * @program: BusinessException.java
- * @description:
+ * @description: 业务异常
  * @author: yindanqing
  * @create: 2020/7/20 14:32
  */
-public class BusinessException extends RuntimeException {
+public class BizException extends RuntimeException {
 
     private int code;
 
     private String msg;
 
-    public BusinessException() {
+    public BizException() {
     }
 
-    public BusinessException(int code) {
+    public BizException(int code) {
         this.code = code;
     }
 
-    public BusinessException(int code, String msg) {
+    public BizException(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

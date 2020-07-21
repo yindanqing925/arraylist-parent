@@ -1,3 +1,10 @@
-config:
-  username: yindanqing
-  password: 123456
+# 数据源配置
+user:
+  datasource:
+    url: jdbc:mysql://106.12.132.7:3306/user_db?useUnicode=true&characterEncoding=UTF8
+    driver: com.mysql.jdbc.Driver
+    username: user_ms
+    password: 1234qwer
+    initSize: 5
+    minIdle: 5
+    maxActive: 20

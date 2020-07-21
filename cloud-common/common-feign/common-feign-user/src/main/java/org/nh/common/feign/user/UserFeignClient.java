@@ -1,5 +1,6 @@
 package org.nh.common.feign.user;
 
+import org.nh.common.exception.UserBizExceptionCode;
 import org.nh.common.feign.user.response.UserBaseVo;
 import org.nh.common.web.RestResult;
 import org.nh.common.web.ServiceNameConstants;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name= ServiceNameConstants.CLOUD_USER_MICROSERVICE, fallback = UserFeignClientFallBack.class)
 public interface UserFeignClient {
 
-    @RequestMapping(value = "/getUserBaseInfoByUsername", method = RequestMethod.GET)
+    @RequestMapping(value = "/8101/getUserBaseInfoByUsername", method = RequestMethod.GET)
     RestResult<UserBaseVo> getUserBaseInfoByUsername(@RequestParam(value = "username") String username);
 
 }
@@ -25,6 +26,6 @@ class UserFeignClientFallBack implements UserFeignClient {
 
     @Override
     public RestResult<UserBaseVo> getUserBaseInfoByUsername(String username) {
-        return null;
+        return new RestResult<>(UserBizExceptionCode.INTERFACE_ERROR_8101);
     }
 }

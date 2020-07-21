@@ -1,2 +1,4 @@
-config:
-  serviceOwner: yindanqing
+# 服务标记, 用于服务数据源创建时使用
+# 请务必保持数据源以此为开头
+application:
+  sign: user
