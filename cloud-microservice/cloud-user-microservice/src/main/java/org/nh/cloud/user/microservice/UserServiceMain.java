@@ -9,6 +9,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @program: UserServiceMain.java
@@ -17,12 +18,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @create: 2019/12/18 17:56
  */
 @Log4j2
-@EnableAsync
 @EnableHystrix
 @EnableDiscoveryClient
 @SpringCloudApplication
 @ComponentScan(basePackages = { "org.nh" })
-@EnableFeignClients(basePackages = { "org.nh.feign" })
 public class UserServiceMain {
 
     public static void main(String[] args) {

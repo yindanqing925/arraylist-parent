@@ -14,8 +14,8 @@ public interface UserBizExceptionCode {
     int SERVER_ERROR = 810000;
 
     /**
-     * 8101接口异常
+     * 810101接口异常
      */
-    int INTERFACE_ERROR_8101 = 810100;
+    int INTERFACE_ERROR_810101 = 81010100;
 
 }

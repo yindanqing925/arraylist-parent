@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.ThreadFactory;
@@ -17,6 +18,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @Date 2019/6/11 20:05
  */
 @Configuration
+@EnableAsync
 public class TaskExecutorConfig {
 
     //核心线程数

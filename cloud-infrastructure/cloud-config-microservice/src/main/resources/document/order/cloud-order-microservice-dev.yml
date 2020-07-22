@@ -1,0 +1,10 @@
+# 数据源配置
+order:
+  datasource:
+    url: jdbc:mysql://106.12.132.7:3306/order_db?useUnicode=true&characterEncoding=UTF8
+    driver: com.mysql.jdbc.Driver
+    username: user_ms
+    password: 1234qwer
+    initSize: 5
+    minIdle: 5
+    maxActive: 20

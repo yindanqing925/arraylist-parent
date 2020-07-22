@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name= ServiceNameConstants.CLOUD_USER_MICROSERVICE, fallback = UserFeignClientFallBack.class)
 public interface UserFeignClient {
 
-    @RequestMapping(value = "/8101/getUserBaseInfoByUsername", method = RequestMethod.GET)
+    @RequestMapping(value = "/user-base/810101/getUserBaseInfoByUsername", method = RequestMethod.GET)
     RestResult<UserBaseVo> getUserBaseInfoByUsername(@RequestParam(value = "username") String username);
 
 }
@@ -26,6 +26,6 @@ class UserFeignClientFallBack implements UserFeignClient {
 
     @Override
     public RestResult<UserBaseVo> getUserBaseInfoByUsername(String username) {
-        return new RestResult<>(UserBizExceptionCode.INTERFACE_ERROR_8101);
+        return new RestResult<>(UserBizExceptionCode.INTERFACE_ERROR_810101);
     }
 }
