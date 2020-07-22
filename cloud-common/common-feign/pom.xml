@@ -13,6 +13,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>common-feign-user</module>
+    <module>common-feign-order</module>
   </modules>
 
   <dependencies>

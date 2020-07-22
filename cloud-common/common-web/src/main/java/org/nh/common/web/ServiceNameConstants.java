@@ -10,4 +10,6 @@ public interface ServiceNameConstants {
 
     String CLOUD_USER_MICROSERVICE = "cloud-user-microservice";
 
+    String CLOUD_ORDER_MICROSERVICE = "cloud-order-microservice";
+
 }

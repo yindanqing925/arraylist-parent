@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: cloud-order-microservice
+
+
+server:
+  port: 8200
+
+# Logger config
+logging:
+  config: classpath:log4j2.xml

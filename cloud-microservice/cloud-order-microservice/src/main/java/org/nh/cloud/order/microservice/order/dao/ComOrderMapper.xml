@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.nh.cloud.order.microservice.order.dao.ComOrderMapper" >
+  <resultMap id="BaseResultMap" type="org.nh.cloud.order.microservice.order.bean.ComOrder" >
+    <id column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="order_original_amount" property="orderOriginalAmount" jdbcType="DECIMAL" />
+    <result column="order_discount_amount" property="orderDiscountAmount" jdbcType="DECIMAL" />
+    <result column="order_actual_discount_amount" property="orderActualDiscountAmount" jdbcType="DECIMAL" />
+    <result column="order_final_amount" property="orderFinalAmount" jdbcType="DECIMAL" />
+    <result column="order_paid_amount" property="orderPaidAmount" jdbcType="DECIMAL" />
+    <result column="payment_no" property="paymentNo" jdbcType="VARCHAR" />
+    <result column="partner_payment" property="partnerPayment" jdbcType="VARCHAR" />
+    <result column="payment_start_time" property="paymentStartTime" jdbcType="TIMESTAMP" />
+    <result column="paid_time" property="paidTime" jdbcType="TIMESTAMP" />
+    <result column="order_unit" property="orderUnit" jdbcType="INTEGER" />
+    <result column="order_desc" property="orderDesc" jdbcType="VARCHAR" />
+    <result column="order_desc_short" property="orderDescShort" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, order_no, username, order_original_amount, order_discount_amount, order_actual_discount_amount, 
+    order_final_amount, order_paid_amount, payment_no, partner_payment, payment_start_time, 
+    paid_time, order_unit, order_desc, order_desc_short, order_status, merchant_no, merchant_name, 
+    create_by, create_time, update_by, update_time, end_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from com_order
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from com_order
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.nh.cloud.order.microservice.order.bean.ComOrder" >
+    insert into com_order (order_id, order_no, username, 
+      order_original_amount, order_discount_amount, 
+      order_actual_discount_amount, order_final_amount, 
+      order_paid_amount, payment_no, partner_payment, 
+      payment_start_time, paid_time, order_unit, 
+      order_desc, order_desc_short, order_status, 
+      merchant_no, merchant_name, create_by, 
+      create_time, update_by, update_time, 
+      end_time)
+    values (#{orderId,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{orderOriginalAmount,jdbcType=DECIMAL}, #{orderDiscountAmount,jdbcType=DECIMAL}, 
+      #{orderActualDiscountAmount,jdbcType=DECIMAL}, #{orderFinalAmount,jdbcType=DECIMAL}, 
+      #{orderPaidAmount,jdbcType=DECIMAL}, #{paymentNo,jdbcType=VARCHAR}, #{partnerPayment,jdbcType=VARCHAR}, 
+      #{paymentStartTime,jdbcType=TIMESTAMP}, #{paidTime,jdbcType=TIMESTAMP}, #{orderUnit,jdbcType=INTEGER}, 
+      #{orderDesc,jdbcType=VARCHAR}, #{orderDescShort,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, 
+      #{merchantNo,jdbcType=VARCHAR}, #{merchantName,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.nh.cloud.order.microservice.order.bean.ComOrder" >
+    insert into com_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="orderOriginalAmount != null" >
+        order_original_amount,
+      </if>
+      <if test="orderDiscountAmount != null" >
+        order_discount_amount,
+      </if>
+      <if test="orderActualDiscountAmount != null" >
+        order_actual_discount_amount,
+      </if>
+      <if test="orderFinalAmount != null" >
+        order_final_amount,
+      </if>
+      <if test="orderPaidAmount != null" >
+        order_paid_amount,
+      </if>
+      <if test="paymentNo != null" >
+        payment_no,
+      </if>
+      <if test="partnerPayment != null" >
+        partner_payment,
+      </if>
+      <if test="paymentStartTime != null" >
+        payment_start_time,
+      </if>
+      <if test="paidTime != null" >
+        paid_time,
+      </if>
+      <if test="orderUnit != null" >
+        order_unit,
+      </if>
+      <if test="orderDesc != null" >
+        order_desc,
+      </if>
+      <if test="orderDescShort != null" >
+        order_desc_short,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="merchantNo != null" >
+        merchant_no,
+      </if>
+      <if test="merchantName != null" >
+        merchant_name,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOriginalAmount != null" >
+        #{orderOriginalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderDiscountAmount != null" >
+        #{orderDiscountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderActualDiscountAmount != null" >
+        #{orderActualDiscountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderFinalAmount != null" >
+        #{orderFinalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderPaidAmount != null" >
+        #{orderPaidAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentNo != null" >
+        #{paymentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerPayment != null" >
+        #{partnerPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentStartTime != null" >
+        #{paymentStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paidTime != null" >
+        #{paidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUnit != null" >
+        #{orderUnit,jdbcType=INTEGER},
+      </if>
+      <if test="orderDesc != null" >
+        #{orderDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDescShort != null" >
+        #{orderDescShort,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="merchantNo != null" >
+        #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null" >
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.nh.cloud.order.microservice.order.bean.ComOrder" >
+    update com_order
+    <set >
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOriginalAmount != null" >
+        order_original_amount = #{orderOriginalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderDiscountAmount != null" >
+        order_discount_amount = #{orderDiscountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderActualDiscountAmount != null" >
+        order_actual_discount_amount = #{orderActualDiscountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderFinalAmount != null" >
+        order_final_amount = #{orderFinalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderPaidAmount != null" >
+        order_paid_amount = #{orderPaidAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentNo != null" >
+        payment_no = #{paymentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerPayment != null" >
+        partner_payment = #{partnerPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentStartTime != null" >
+        payment_start_time = #{paymentStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paidTime != null" >
+        paid_time = #{paidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUnit != null" >
+        order_unit = #{orderUnit,jdbcType=INTEGER},
+      </if>
+      <if test="orderDesc != null" >
+        order_desc = #{orderDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDescShort != null" >
+        order_desc_short = #{orderDescShort,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="merchantNo != null" >
+        merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null" >
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.nh.cloud.order.microservice.order.bean.ComOrder" >
+    update com_order
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      order_original_amount = #{orderOriginalAmount,jdbcType=DECIMAL},
+      order_discount_amount = #{orderDiscountAmount,jdbcType=DECIMAL},
+      order_actual_discount_amount = #{orderActualDiscountAmount,jdbcType=DECIMAL},
+      order_final_amount = #{orderFinalAmount,jdbcType=DECIMAL},
+      order_paid_amount = #{orderPaidAmount,jdbcType=DECIMAL},
+      payment_no = #{paymentNo,jdbcType=VARCHAR},
+      partner_payment = #{partnerPayment,jdbcType=VARCHAR},
+      payment_start_time = #{paymentStartTime,jdbcType=TIMESTAMP},
+      paid_time = #{paidTime,jdbcType=TIMESTAMP},
+      order_unit = #{orderUnit,jdbcType=INTEGER},
+      order_desc = #{orderDesc,jdbcType=VARCHAR},
+      order_desc_short = #{orderDescShort,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+
+  <select id="getOrderByOrderNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from com_order
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </select>
+</mapper>

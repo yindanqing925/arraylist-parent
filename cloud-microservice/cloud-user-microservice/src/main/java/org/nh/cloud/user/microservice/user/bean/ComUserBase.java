@@ -1,11 +1,15 @@
 package org.nh.cloud.user.microservice.user.bean;
 
-public class UserBase {
+import java.util.Date;
+
+public class ComUserBase {
     private Integer userId;
 
     private String username;
 
     private String password;
+
+    private String nickName;
 
     private String email;
 
@@ -16,6 +20,14 @@ public class UserBase {
     private Integer gender;
 
     private String tips;
+
+    private String createBy;
+
+    private Date createTime;
+
+    private String updateBy;
+
+    private Date updateTime;
 
     public Integer getUserId() {
         return userId;
@@ -39,6 +51,14 @@ public class UserBase {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
     }
 
     public String getEmail() {
@@ -79,5 +99,37 @@ public class UserBase {
 
     public void setTips(String tips) {
         this.tips = tips == null ? null : tips.trim();
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy == null ? null : createBy.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy == null ? null : updateBy.trim();
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

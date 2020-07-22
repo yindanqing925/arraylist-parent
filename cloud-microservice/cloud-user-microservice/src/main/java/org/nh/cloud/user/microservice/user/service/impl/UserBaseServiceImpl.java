@@ -1,7 +1,7 @@
 package org.nh.cloud.user.microservice.user.service.impl;
 
-import org.nh.cloud.user.microservice.user.bean.UserBase;
-import org.nh.cloud.user.microservice.user.dao.UserBaseMapper;
+import org.nh.cloud.user.microservice.user.bean.ComUserBase;
+import org.nh.cloud.user.microservice.user.dao.ComUserBaseMapper;
 import org.nh.cloud.user.microservice.user.service.UserBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
 public class UserBaseServiceImpl implements UserBaseService {
 
     @Autowired
-    private UserBaseMapper userBaseMapper;
+    private ComUserBaseMapper userBaseMapper;
 
     @Override
-    public UserBase getUserBaseInfoByUsername(String username) {
+    public ComUserBase getUserBaseInfoByUsername(String username) {
         return userBaseMapper.selectByUsername(username);
     }
 }

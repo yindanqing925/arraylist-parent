@@ -1,7 +1,6 @@
 package org.nh.cloud.user.microservice.user.service;
 
-import org.nh.cloud.user.microservice.user.bean.UserBase;
-import org.nh.common.feign.user.response.UserBaseVo;
+import org.nh.cloud.user.microservice.user.bean.ComUserBase;
 
 /**
  * @program: UserService.java
@@ -16,6 +15,6 @@ public interface UserBaseService {
      * @param username
      * @return
      */
-    UserBase getUserBaseInfoByUsername(String username);
+    ComUserBase getUserBaseInfoByUsername(String username);
 
 }

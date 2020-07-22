@@ -1,7 +1,7 @@
 package org.nh.cloud.user.microservice.user.facade.impl;
 
 import org.modelmapper.ModelMapper;
-import org.nh.cloud.user.microservice.user.bean.UserBase;
+import org.nh.cloud.user.microservice.user.bean.ComUserBase;
 import org.nh.cloud.user.microservice.user.facade.UserBaseFacade;
 import org.nh.cloud.user.microservice.user.service.UserBaseService;
 import org.nh.common.feign.user.response.UserBaseVo;
@@ -25,7 +25,7 @@ public class UserBaseFacadeImpl implements UserBaseFacade {
 
     @Override
     public UserBaseVo getUserBaseInfoByUsername(String username) {
-        UserBase userBase = userService.getUserBaseInfoByUsername(username);
+        ComUserBase userBase = userService.getUserBaseInfoByUsername(username);
         return modelMapper.map(userBase, UserBaseVo.class);
     }
 }

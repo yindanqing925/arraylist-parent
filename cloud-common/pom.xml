@@ -19,6 +19,7 @@
         <module>common-web</module>
         <module>common-config</module>
         <module>common-exception</module>
+      <module>common-generate</module>
     </modules>
 
 </project>

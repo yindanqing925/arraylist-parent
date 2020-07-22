@@ -1,39 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.nh.cloud.user.microservice.user.dao.UserBaseMapper" >
-  <resultMap id="BaseResultMap" type="org.nh.cloud.user.microservice.user.bean.UserBase" >
+<mapper namespace="org.nh.cloud.user.microservice.user.dao.ComUserBaseMapper" >
+  <resultMap id="BaseResultMap" type="org.nh.cloud.user.microservice.user.bean.ComUserBase" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="gender" property="gender" jdbcType="INTEGER" />
     <result column="tips" property="tips" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, username, password, email, telephone, mobile, gender, tips
+    user_id, username, password, nick_name, email, telephone, mobile, gender, tips, create_by, 
+    create_time, update_by, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from user_base
+    from com_user_base
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from user_base
+    delete from com_user_base
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.nh.cloud.user.microservice.user.bean.UserBase" >
-    insert into user_base (user_id, username, password, 
-      email, telephone, mobile, 
-      gender, tips)
+  <insert id="insert" parameterType="org.nh.cloud.user.microservice.user.bean.ComUserBase" >
+    insert into com_user_base (user_id, username, password, 
+      nick_name, email, telephone, 
+      mobile, gender, tips, 
+      create_by, create_time, update_by, 
+      update_time)
     values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=INTEGER}, #{tips,jdbcType=VARCHAR})
+      #{nickName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{tips,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="org.nh.cloud.user.microservice.user.bean.UserBase" >
-    insert into user_base
+  <insert id="insertSelective" parameterType="org.nh.cloud.user.microservice.user.bean.ComUserBase" >
+    insert into com_user_base
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
         user_id,
@@ -43,6 +53,9 @@
       </if>
       <if test="password != null" >
         password,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
       </if>
       <if test="email != null" >
         email,
@@ -59,6 +72,18 @@
       <if test="tips != null" >
         tips,
       </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -69,6 +94,9 @@
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -85,16 +113,31 @@
       <if test="tips != null" >
         #{tips,jdbcType=VARCHAR},
       </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.nh.cloud.user.microservice.user.bean.UserBase" >
-    update user_base
+  <update id="updateByPrimaryKeySelective" parameterType="org.nh.cloud.user.microservice.user.bean.ComUserBase" >
+    update com_user_base
     <set >
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
@@ -111,25 +154,42 @@
       <if test="tips != null" >
         tips = #{tips,jdbcType=VARCHAR},
       </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.nh.cloud.user.microservice.user.bean.UserBase" >
-    update user_base
+  <update id="updateByPrimaryKey" parameterType="org.nh.cloud.user.microservice.user.bean.ComUserBase" >
+    update com_user_base
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=INTEGER},
-      tips = #{tips,jdbcType=VARCHAR}
+      tips = #{tips,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 
   <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
     select
     <include refid="Base_Column_List" />
-    from user_base
+    from com_user_base
     where username = #{username,jdbcType=VARCHAR}
   </select>
 

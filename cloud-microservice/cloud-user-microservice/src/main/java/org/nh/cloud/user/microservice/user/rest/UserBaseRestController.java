@@ -23,7 +23,7 @@ public class UserBaseRestController implements UserFeignClient {
     private UserBaseFacade userFacade;
 
     @Override
-    @ApiOperation(value = "getUserBaseInfoByUsername", notes = "根据用户编码获取用户信息", response = UserBaseVo.class)
+    @ApiOperation(value = "getUserBaseInfoByUsername", notes = "根据用户编码获取用户信息")
     public RestResult<UserBaseVo> getUserBaseInfoByUsername(String username) {
         return new RestResult<>(userFacade.getUserBaseInfoByUsername(username));
     }
