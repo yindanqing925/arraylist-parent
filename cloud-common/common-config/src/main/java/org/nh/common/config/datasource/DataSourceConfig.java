@@ -4,13 +4,16 @@ import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.nh.common.config.datasource.common.DataSourceUtil;
 import org.nh.common.config.datasource.extend.DataSourceProperties;
 import org.nh.common.config.datasource.resolve.PropertiesResolve;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.BeansException;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -30,21 +33,27 @@ import java.sql.SQLException;
  */
 @Configuration
 @EnableTransactionManagement
-public class DataSourceConfig {
+public class DataSourceConfig implements ApplicationContextAware {
 
-    @Value("${application.sign}")
+    private Environment environment;
+
     private String applicationSign;
 
-    @Autowired
-    private Environment environment;
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        environment = applicationContext.getEnvironment();
+        applicationSign = environment.getProperty("application.sign");
+        PACKAGE = String.format(PACKAGE, applicationSign);
+        MAPPER_LOCATION = String.format(MAPPER_LOCATION, applicationSign);
+    }
 
     // 唯一标识
     //这里暂时没有想好怎么处理比较完美
     //String DATASOURCE =APPLICATION_SIGN +  "DataSource";
     //String TRANSACTION_MANAGER = APPLICATION_SIGN + "TransactionManager";
-    //String SQL_SESSION_FACTORY = APPLICATION_SIGN + "SqlSessionFactory";
-    String PACKAGE = "org.nh.cloud." + applicationSign + ".microservice.**.dao";
-    String MAPPER_LOCATION = "classpath:org/nh/cloud/"+ applicationSign +"/microservice/**/*.xml";
+    //String SQL_SESSION_FACTORY = "SqlSessionFactory";
+    private String PACKAGE = "org.nh.cloud.%s.microservice.**.dao";
+    private String MAPPER_LOCATION = "classpath:org/nh/cloud/%s/microservice/**/*.xml";
 
     @Bean
     public DataSource dataSource() throws SQLException {
@@ -62,8 +71,15 @@ public class DataSourceConfig {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MAPPER_LOCATION));
-        sessionFactory.setTypeAliasesPackage(PACKAGE);
         return sessionFactory.getObject();
+    }
+
+    @Bean
+    public MapperScannerConfigurer mapperScannerConfigurer(SqlSessionFactory sqlSessionFactory) {
+        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+        mapperScannerConfigurer.setBasePackage(PACKAGE);
+        mapperScannerConfigurer.setSqlSessionFactory(sqlSessionFactory);
+        return mapperScannerConfigurer;
     }
 
     @Bean

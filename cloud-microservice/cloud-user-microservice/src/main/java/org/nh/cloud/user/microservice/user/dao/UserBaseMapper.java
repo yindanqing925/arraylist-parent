@@ -1,7 +1,10 @@
 package org.nh.cloud.user.microservice.user.dao;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.nh.cloud.user.microservice.user.bean.UserBase;
+import org.springframework.stereotype.Repository;
 
+//@Mapper
 public interface UserBaseMapper {
     int deleteByPrimaryKey(Integer userId);
 

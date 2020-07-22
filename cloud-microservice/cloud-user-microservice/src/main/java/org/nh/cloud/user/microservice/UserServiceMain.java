@@ -22,7 +22,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableDiscoveryClient
 @SpringCloudApplication
 @ComponentScan(basePackages = { "org.nh" })
-@EnableFeignClients(basePackages = { "org.nh" })
+@EnableFeignClients(basePackages = { "org.nh.feign" })
 public class UserServiceMain {
 
     public static void main(String[] args) {
